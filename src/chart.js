@@ -1,45 +1,54 @@
-import "chart.js/auto";
+import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 
-var dataset1 = [
-  [1, 1],
-  [12, 20],
-  [24, 36],
-  [32, 50],
-  [40, 70],
-  [50, 100],
-  [55, 106],
-  [65, 123],
-  [73, 130],
-  [78, 134],
-  [83, 136],
-  [89, 138],
-  [100, 140],
-];
-
 const LineGraph = (props) => {
+  const title = "Long Call";
+
+  const moneyData = [-50, -50, 0, 50, 100];
+  const datasetOptions = {
+    pointRadius: [...Array(moneyData.length - 1).fill(0), 10],
+    pointStyle: [...Array(moneyData.length - 1).fill(""), "triangle"],
+    rotation: [...Array(moneyData.length - 1).fill(0), 45],
+  };
+
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: ["", "", "Breakeven", "", ""],
     datasets: [
       {
-        label: "First dataset",
-        data: [33, 53, 85, 41, 44, 65],
-        fill: true,
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
-      },
-      {
-        label: "Second dataset",
-        data: [33, 25, 35, 51, 54, 76],
-        fill: false,
-        borderColor: "#742774",
+        data: moneyData,
+        fill: {
+          target: {
+            value: 0,
+          },
+          below: "rgba(196, 77, 86, 0.9)",
+          above: "rgba(50,205,50,0.7)",
+        },
+        ...datasetOptions,
       },
     ],
   };
 
+  const chartOptions = {
+    scales: {
+      yAxis: {
+        display: false,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+
+      title: {
+        display: true,
+        text: title,
+      },
+    },
+  };
+
   return (
     <div>
-      <Line data={data}></Line>
+      <Line options={chartOptions} data={data}></Line>
     </div>
   );
 };
