@@ -1,10 +1,16 @@
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  width: 50%;
+  height: 100%;
+`;
 
 const LineGraph = (props) => {
-  const title = "Long Call";
+  const { optionsType } = props;
+  const { title, moneyData } = optionsType;
 
-  const moneyData = [-50, -50, 0, 50, 100];
   const datasetOptions = {
     pointRadius: [...Array(moneyData.length - 1).fill(0), 10],
     pointStyle: [...Array(moneyData.length - 1).fill(""), "triangle"],
@@ -47,9 +53,9 @@ const LineGraph = (props) => {
   };
 
   return (
-    <div>
+    <StyledContainer>
       <Line options={chartOptions} data={data}></Line>
-    </div>
+    </StyledContainer>
   );
 };
 
