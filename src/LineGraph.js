@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  width: 50%;
+  width: 100%;
   height: 100%;
 `;
 
@@ -12,9 +12,7 @@ const LineGraph = (props) => {
   const { title, moneyData } = optionsType;
 
   const datasetOptions = {
-    pointRadius: [...Array(moneyData.length - 1).fill(0), 10],
-    pointStyle: [...Array(moneyData.length - 1).fill(""), "triangle"],
-    rotation: [...Array(moneyData.length - 1).fill(0), 45],
+    pointRadius: [...Array(moneyData.length - 1).fill(0)],
   };
 
   const data = {
