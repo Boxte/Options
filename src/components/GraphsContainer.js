@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import LineGraph from "./LineGraph";
-import { LongCall, LongPut, ShortCall, ShortPut } from "./options_data/Types";
+import { LongCall, LongPut, ShortCall, ShortPut } from "../options_data/Types";
 
 const GraphsContainer = (props) => {
   const data = [
